@@ -1,0 +1,43 @@
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: $main;
+  }
+}
+
+
+
+button,
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $bg;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.51);
+  border: none;
+  background-color: $main;
+  line-height: 40px;
+  text-align: center;
+  height: 40px;
+  width: 200px;
+
+  &:hover {
+    cursor: pointer;
+    color: $main;
+    background-color: $bg;
+  }
+
+  &:hover .button-icon {
+    filter: invert(100);
+  }
+
+  .button-icon {
+    width: 20px;
+  }
+
+  .text {
+    margin-left: 10px;
+    display: inline-block;
+  }
+}
