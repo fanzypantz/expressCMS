@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost/' + process.env.MONGODB_URI || 'mevnStack';
+const connectionString =
+  'mongodb://localhost/' + process.env.MONGODB_URI || 'mevnStack';
 mongoose.connect(connectionString, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
-db = mongoose.connection;
- 
+const db = mongoose.connection;
+
 module.exports = db;

@@ -41,24 +41,24 @@ export default {
       userError: null,
       email: '',
       password: ''
-    }
+    };
   },
 
   methods: {
     async submitForm(e) {
-      e.preventDefault()
+      e.preventDefault();
       const reset = await this.$axios.post('/api/forgot_password', {
         email: this.email
-      })
+      });
       if (reset.data.success) {
-        this.userError = null
-        this.message = reset.data.message
+        this.userError = null;
+        this.message = reset.data.message;
       } else if (reset.data.userError) {
-        this.userError = reset.data.userError
+        this.userError = reset.data.userError;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

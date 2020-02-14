@@ -109,22 +109,22 @@ export default {
       email: '',
       password: '',
       confirmPassword: ''
-    }
+    };
   },
 
   mounted() {
     setTimeout(() => {
       // If already logged in redirect to index
       if (this.$store.state.auth.user !== null) {
-        this.$nuxt.$router.replace({ path: '/' })
+        this.$nuxt.$router.replace({ path: '/' });
       }
-    }, 100)
+    }, 100);
   },
 
   methods: {
     async submitForm(e) {
-      e.preventDefault()
-      this.errors = {}
+      e.preventDefault();
+      this.errors = {};
 
       if (this.password === this.confirmPassword) {
         const signup = await this.$axios.post('/api/signup', {
@@ -132,23 +132,23 @@ export default {
           username: this.username,
           email: this.email,
           password: this.password
-        })
+        });
         if (signup.data.success) {
-          this.$store.commit('auth/toggleSignup')
-          this.$store.commit('auth/toggleLogin')
+          this.$store.commit('auth/toggleSignup');
+          this.$store.commit('auth/toggleLogin');
         } else if (signup.data.errors) {
-          this.errors = signup.data.errors
+          this.errors = signup.data.errors;
         }
       } else {
-        this.errors.confirm_password = {}
+        this.errors.confirm_password = {};
         this.errors.confirm_password.message =
-          'Please make sure your password match.'
-        this.password = ''
-        this.confirmPassword = ''
+          'Please make sure your password match.';
+        this.password = '';
+        this.confirmPassword = '';
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

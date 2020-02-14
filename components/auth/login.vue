@@ -57,37 +57,37 @@ export default {
       error: null,
       email: '',
       password: ''
-    }
+    };
   },
 
   mounted() {
     setTimeout(() => {
       // If already logged in redirect to index
       if (this.$store.state.auth.user !== null) {
-        this.$nuxt.$router.replace({ path: '/' })
+        this.$nuxt.$router.replace({ path: '/' });
       }
-    }, 100)
+    }, 100);
   },
 
   methods: {
     async submitForm(e) {
-      e.preventDefault()
+      e.preventDefault();
       const login = await this.$axios.post('/api/login', {
         email: this.email,
         password: this.password
-      })
+      });
       if (login.data.success) {
         if (this.$nuxt.$route.path !== '/') {
-          this.$nuxt.$router.replace({ path: '/' })
+          this.$nuxt.$router.replace({ path: '/' });
         }
-        this.$store.commit('auth/setUser', login.data.user)
-        this.$store.commit('auth/toggleLogin')
+        this.$store.commit('auth/setUser', login.data.user);
+        this.$store.commit('auth/toggleLogin');
       } else if (login.data.error) {
-        this.error = login.data.error.message
+        this.error = login.data.error.message;
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

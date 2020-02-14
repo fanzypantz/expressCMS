@@ -50,32 +50,32 @@ export default {
       token: null,
       password: '',
       confirmPassword: ''
-    }
+    };
   },
 
   mounted() {},
 
   methods: {
     async submitForm(e) {
-      e.preventDefault()
+      e.preventDefault();
       if (this.password === this.confirmPassword) {
         const reset = await this.$axios.post('/api/reset_password', {
           password: this.password,
           token: this.$route.query.token
-        })
+        });
         if (reset.data.success) {
-          this.$store.commit('auth/toggleLogin')
+          this.$store.commit('auth/toggleLogin');
         } else if (reset.data.userError) {
-          this.userError = reset.data.userError
+          this.userError = reset.data.userError;
         }
       } else {
-        this.userError = 'Please make sure your password match.'
-        this.password = ''
-        this.confirmPassword = ''
+        this.userError = 'Please make sure your password match.';
+        this.password = '';
+        this.confirmPassword = '';
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

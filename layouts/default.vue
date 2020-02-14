@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Navbar from '~/components/Navbar.vue'
-import Login from '~/components/auth/login.vue'
-import Signup from '~/components/auth/signup.vue'
+import Navbar from '~/components/Navbar.vue';
+import Login from '~/components/auth/login.vue';
+import Signup from '~/components/auth/signup.vue';
 export default {
   components: {
     Navbar,
@@ -19,21 +19,21 @@ export default {
   },
 
   mounted() {
-    this.getUser()
+    this.getUser();
   },
 
   methods: {
     async getUser() {
       // Don't try and get the user if you are on an auth page
       if (!this.$nuxt.$route.path.includes('auth')) {
-        const user = await this.$axios.get('/api/user_data')
+        const user = await this.$axios.get('/api/user_data');
         if (user.data.email !== undefined) {
-          this.$store.commit('auth/setUser', user.data)
+          this.$store.commit('auth/setUser', user.data);
         }
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
