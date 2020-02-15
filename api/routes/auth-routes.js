@@ -129,7 +129,6 @@ module.exports = function(app) {
               name: user.name
             }
           };
-          console.log('data: ', data);
           gmailTransport.sendMail(data, function(err, info) {
             if (!err) {
               console.log('info: ', info);
