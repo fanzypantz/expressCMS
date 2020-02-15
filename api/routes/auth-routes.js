@@ -124,8 +124,7 @@ module.exports = function(app) {
             subject: 'Password reset requested!',
             template: 'forgot-password-email',
             context: {
-              url:
-                process.env.APP_URL + '/api/auth/reset_password?token=' + token,
+              url: process.env.APP_URL + '/auth/reset_password?token=' + token,
               name: user.name
             }
           };
