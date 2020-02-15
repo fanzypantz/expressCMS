@@ -1,5 +1,9 @@
-export default {
+const env = require('dotenv').config();
+
+module.exports = {
   mode: 'universal',
+
+  env: env.parsed,
   /*
    ** Headers of the page
    */
@@ -66,17 +70,24 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://localhost:4000',
+    baseURL: 'http://localhost:3000',
     credentials: true,
     debug: true
   },
   /*
    ** Build configuration
    */
+  serverMiddleware: [
+    // API middleware
+    '~/api/index.js'
+  ],
+
   build: {
     /*
      ** You can extend webpack config here
      */
+    watch: ['api'],
+
     extend(config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
@@ -91,4 +102,6 @@ export default {
       }
     }
   }
+
+
 };

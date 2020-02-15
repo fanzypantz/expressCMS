@@ -13,7 +13,7 @@ module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post('/api/login', function(req, res, next) {
+  app.post('/login', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
       console.log('info: ', info);
       if (err) {
@@ -47,7 +47,7 @@ module.exports = function(app) {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post('/api/signup', function(req, res) {
+  app.post('/signup', function(req, res) {
     console.log(req.body);
 
     const newUser = new User({
@@ -81,7 +81,7 @@ module.exports = function(app) {
   });
 
   // Route for logging user out
-  app.get('/api/logout', isAuthenticated, function(req, res) {
+  app.get('/logout', isAuthenticated, function(req, res) {
     req.logout();
     res.json({
       success: true,
@@ -90,7 +90,7 @@ module.exports = function(app) {
   });
 
   // Route for requesting password reset
-  app.post('/api/forgot_password', function(req, res) {
+  app.post('/forgot_password', function(req, res) {
     const secret = process.env.JWT_SECRET;
     if (!secret) {
       return res.status(500).json({
@@ -124,10 +124,12 @@ module.exports = function(app) {
             subject: 'Password reset requested!',
             template: 'forgot-password-email',
             context: {
-              url: process.env.APP_URL + '/auth/reset_password?token=' + token,
+              url:
+                process.env.APP_URL + '/api/auth/reset_password?token=' + token,
               name: user.name
             }
           };
+          console.log('data: ', data);
           gmailTransport.sendMail(data, function(err, info) {
             if (!err) {
               console.log('info: ', info);
@@ -154,7 +156,7 @@ module.exports = function(app) {
   });
 
   // Route to reset password
-  app.post('/api/reset_password', function(req, res) {
+  app.post('/reset_password', function(req, res) {
     const secret = process.env.JWT_SECRET;
     if (!secret) {
       return res.status(500).json({
@@ -230,7 +232,7 @@ module.exports = function(app) {
   });
 
   // Route for getting some data about our user to be used client side
-  app.get('/api/user_data', isAuthenticated, function(req, res) {
+  app.get('/user_data', isAuthenticated, function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});

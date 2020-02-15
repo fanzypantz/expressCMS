@@ -29,11 +29,11 @@ module.exports.ViewOption = (transport, hbs) => {
     hbs({
       viewEngine: {
         extName: '.hbs',
-        partialsDir: 'auth/emailTemplates',
-        layoutsDir: 'auth/emailTemplates/layouts',
+        partialsDir: 'api/auth/emailTemplates',
+        layoutsDir: 'api/auth/emailTemplates/layouts',
         defaultLayout: 'default.hbs'
       },
-      viewPath: 'auth/emailTemplates',
+      viewPath: 'api/auth/emailTemplates',
       extName: '.hbs'
     })
   );

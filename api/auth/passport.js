@@ -15,11 +15,13 @@ passport.use(
     },
     function(email, password, done) {
       // When a user tries to sign in this code runs
+      console.log('email: ', email, password);
       User.findOne(
         {
           email
         },
         function(err, user) {
+          console.log('user: ', user);
           if (err) {
             return done(null, false, {
               message: 'Could not find an user with this email.'
