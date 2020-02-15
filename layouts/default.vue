@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <navbar></navbar>
     <login v-if="$store.state.auth.isLoggingIn"></login>
     <signup v-if="$store.state.auth.isSigningUp"></signup>
@@ -60,7 +60,19 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+
+.main-container {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
 .container {
+  margin-top: $navHeight;
   position: relative;
+  min-height: calc(100vh - #{$navHeight});
+  width: 100%;
 }
 </style>

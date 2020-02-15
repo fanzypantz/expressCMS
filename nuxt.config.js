@@ -70,7 +70,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://localhost:3000',
+    baseURL: process.env.APP_URL || 'http://localhost:4000',
     credentials: true,
     debug: true
   },
@@ -102,6 +102,4 @@ module.exports = {
       }
     }
   }
-
-
 };

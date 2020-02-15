@@ -4,3 +4,4 @@ yarn.lock
 .svg
 .png
 .jpg
+.env.example

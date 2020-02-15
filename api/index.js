@@ -1,4 +1,3 @@
-
 // eslint-disable-next-line no-unused-vars
 const db = require('./db/connection');
 const passport = require('./auth/passport');
@@ -57,6 +56,7 @@ app.use(passport.session());
 /// ///////////////////////////////
 require('./routes/auth-routes.js')(app);
 require('./routes/base-routes.js')(app);
+require('./routes/admin-routes.js')(app);
 
 /// ///////////////////////////////
 // Server

@@ -44,7 +44,7 @@ const userSchema = new Schema({
     unique: true,
     validate: [validateEmail, 'Please fill in a valid email address.']
   },
-  admin: Boolean,
+  admin: { type: Boolean, default: false },
   location: String,
   meta: {
     age: Number,

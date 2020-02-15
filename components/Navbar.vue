@@ -53,7 +53,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  height: 45px;
+  height: $navHeight;
   width: 100%;
   background-color: $bg;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
