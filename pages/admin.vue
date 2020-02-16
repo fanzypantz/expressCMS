@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Status</h1>
+    <h1 @click="test">Test</h1>
   </div>
 </template>
 
@@ -14,13 +14,20 @@ export default {
 
   created() {},
 
-  methods: {}
+  methods: {
+    async test() {
+      // eslint-disable-next-line no-unused-vars
+      const test = await this.$axios.get('/api/admin/test');
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 .container {
-  min-height: 100vh;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

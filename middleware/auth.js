@@ -1,5 +1,4 @@
 export default function({ store, error }) {
-  console.log('store: ', store.state.user);
   if (store.state.user === null) {
     error({
       message: 'You are not connected',

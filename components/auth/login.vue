@@ -55,8 +55,8 @@ export default {
   data() {
     return {
       error: null,
-      email: '',
-      password: ''
+      email: 'andreas@tollanes.com',
+      password: 'Tullernes1!'
     };
   },
 

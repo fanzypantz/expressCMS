@@ -12,8 +12,9 @@ const isAdmin = require('../auth/middleware/isAdmin');
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
-router.post('/test', isAdmin, function(req, res, next) {
+router.get('/admin/test', isAdmin, function(req, res, next) {
   res.json({
+    message: 'test works, only an auth user can see this',
     success: true,
     path: '/'
   });
