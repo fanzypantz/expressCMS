@@ -6,6 +6,7 @@
         status.health ? 'Healthy' : 'Faulty'
       }}</span>
     </h1>
+    <nuxt-link to="/admin">Admin Panel</nuxt-link>
   </div>
 </template>
 
@@ -17,13 +18,13 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     // Call the status API
     this.getStatus();
     // Set an interval for 10 seconds to refresh it
-    setInterval(() => {
-      this.getStatus();
-    }, 10000);
+    // window.setInterval(() => {
+    //   this.getStatus();
+    // }, 10000);
   },
 
   methods: {
@@ -38,6 +39,7 @@ export default {
 <style lang="scss">
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

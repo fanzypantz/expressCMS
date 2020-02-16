@@ -16,22 +16,6 @@ export default {
     Navbar,
     Login,
     Signup
-  },
-
-  mounted() {
-    this.getUser();
-  },
-
-  methods: {
-    async getUser() {
-      // Don't try and get the user if you are on an auth page
-      if (!this.$nuxt.$route.path.includes('auth')) {
-        const user = await this.$axios.get('/api/user_data');
-        if (user.data.email !== undefined) {
-          this.$store.commit('setUser', user.data);
-        }
-      }
-    }
   }
 };
 </script>
