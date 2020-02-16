@@ -1,4 +1,5 @@
 // eslint-disable-next-line no-unused-vars
+const fs = require('fs');
 const db = require('./db/connection');
 const passport = require('./auth/passport');
 const express = require('express');
@@ -35,15 +36,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /// ///////////////////////////////
-// Routes
+// Dynamic Routes
 /// ///////////////////////////////
-const authRoutes = require('./routes/auth-routes.js');
-const baseRoutes = require('./routes/base-routes.js');
-const adminRoutes = require('./routes/admin-routes.js');
 
-app.use(authRoutes);
-app.use(baseRoutes);
-app.use(adminRoutes);
+// read the routes folder and require the different routes
+fs.readdir('./api/routes', (err, files) => {
+  if (err) {
+    console.log('errors: ', err);
+  }
+  files.forEach((file) => {
+    app.use(require('./routes/' + file));
+  });
+});
 
 /// ///////////////////////////////
 // Server
