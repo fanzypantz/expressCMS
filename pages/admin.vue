@@ -6,21 +6,15 @@
 
 <script>
 export default {
+  middleware: 'auth',
+
   data() {
-    return {
-      status: null
-    };
+    return {};
   },
 
-  created() {
-    this.getStatus();
-  },
+  created() {},
 
-  methods: {
-    async getStatus() {
-      this.status = await this.$axios.get('/api/');
-    }
-  }
+  methods: {}
 };
 </script>
 

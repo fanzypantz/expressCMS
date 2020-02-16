@@ -64,7 +64,7 @@ export default {
           token: this.$route.query.token
         });
         if (reset.data.success) {
-          this.$store.commit('auth/toggleLogin');
+          this.$store.commit('toggleLogin');
         } else if (reset.data.userError) {
           this.userError = reset.data.userError;
         }

@@ -115,7 +115,7 @@ export default {
   mounted() {
     setTimeout(() => {
       // If already logged in redirect to index
-      if (this.$store.state.auth.user !== null) {
+      if (this.$store.state.user !== null) {
         this.$nuxt.$router.replace({ path: '/' });
       }
     }, 100);
@@ -134,8 +134,8 @@ export default {
           password: this.password
         });
         if (signup.data.success) {
-          this.$store.commit('auth/toggleSignup');
-          this.$store.commit('auth/toggleLogin');
+          this.$store.commit('toggleSignup');
+          this.$store.commit('toggleLogin');
         } else if (signup.data.errors) {
           this.errors = signup.data.errors;
         }

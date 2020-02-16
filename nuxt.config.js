@@ -1,3 +1,5 @@
+import bodyParser from 'body-parser';
+import session from 'express-session';
 const env = require('dotenv').config();
 
 module.exports = {
@@ -78,6 +80,17 @@ module.exports = {
    ** Build configuration
    */
   serverMiddleware: [
+    bodyParser.json(),
+
+    session({
+      secret: 'multimonitorsetup',
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 60000
+      }
+    }),
+
     // API middleware
     '~/api/index.js'
   ],

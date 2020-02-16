@@ -3,50 +3,33 @@ const db = require('./db/connection');
 const passport = require('./auth/passport');
 const express = require('express');
 const app = express();
-const session = require('express-session');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
 // App
 app.use(morgan('tiny'));
-app.use(bodyParser.json());
 
 /// ///////////////////////////////
-// CORS fix
+// Router
 /// ///////////////////////////////
 
-// const whitelist = ['http://localhost:3000'];
-// const corsOptions = {
-//   credentials: true, // This is important.
-//   origin: (origin, callback) => {
-//     if (whitelist.includes(origin)) return callback(null, true);
-//     callback(new Error('Not allowed by CORS'));
-//   }
-// };
-//
-// app.use(cors(corsOptions));
+// Create express router
+const router = express.Router();
+
+// Transform req & res to have the same API as express
+// So we can use res.status() & res.json()
+router.use((req, res, next) => {
+  Object.setPrototypeOf(req, app.request);
+  Object.setPrototypeOf(res, app.response);
+  req.res = res;
+  res.req = req;
+  next();
+});
 
 /// ///////////////////////////////
 // Passport
 /// ///////////////////////////////
 
-// Set session
-const sessionExpiration = new Date();
-// Add x amount of days to session expiration
-sessionExpiration.setDate(
-  sessionExpiration.getDate() + process.env.MAX_SESSION || 30
-);
-app.use(
-  session({
-    secret: 'multimonitorsetup',
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: sessionExpiration.getTime()
-    }
-  })
-);
 // Tell app to use the passport session
 app.use(passport.initialize());
 app.use(passport.session());
@@ -54,9 +37,13 @@ app.use(passport.session());
 /// ///////////////////////////////
 // Routes
 /// ///////////////////////////////
-require('./routes/auth-routes.js')(app);
-require('./routes/base-routes.js')(app);
-require('./routes/admin-routes.js')(app);
+const authRoutes = require('./routes/auth-routes.js');
+const baseRoutes = require('./routes/base-routes.js');
+const adminRoutes = require('./routes/admin-routes.js');
+
+app.use(authRoutes);
+app.use(baseRoutes);
+app.use(adminRoutes);
 
 /// ///////////////////////////////
 // Server

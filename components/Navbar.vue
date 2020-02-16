@@ -11,7 +11,7 @@
 export default {
   computed: {
     checkUser() {
-      return this.$store.state.auth.user === null;
+      return this.$store.state.user === null;
     }
   },
 
@@ -20,7 +20,7 @@ export default {
       e.preventDefault();
       const logout = await this.$axios.get('/api/logout');
       if (logout.data.success) {
-        this.$store.commit('auth/setUser', null);
+        this.$store.commit('setUser', null);
         if (this.$nuxt.$route.path !== '/') {
           this.$nuxt.$router.replace({ path: logout.data.path });
         }
@@ -28,17 +28,17 @@ export default {
     },
 
     logIn() {
-      if (this.$store.state.auth.isSigningUp) {
-        this.$store.commit('auth/toggleSignup');
+      if (this.$store.state.isSigningUp) {
+        this.$store.commit('toggleSignup');
       }
-      this.$store.commit('auth/toggleLogin');
+      this.$store.commit('toggleLogin');
     },
 
     signUp() {
-      if (this.$store.state.auth.isLoggingIn) {
-        this.$store.commit('auth/toggleLogin');
+      if (this.$store.state.isLoggingIn) {
+        this.$store.commit('toggleLogin');
       }
-      this.$store.commit('auth/toggleSignup');
+      this.$store.commit('toggleSignup');
     }
   }
 };

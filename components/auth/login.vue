@@ -63,7 +63,7 @@ export default {
   mounted() {
     setTimeout(() => {
       // If already logged in redirect to index
-      if (this.$store.state.auth.user !== null) {
+      if (this.$store.state.user !== null) {
         this.$nuxt.$router.replace({ path: '/' });
       }
     }, 100);
@@ -80,8 +80,8 @@ export default {
         if (this.$nuxt.$route.path !== '/') {
           this.$nuxt.$router.replace({ path: '/' });
         }
-        this.$store.commit('auth/setUser', login.data.user);
-        this.$store.commit('auth/toggleLogin');
+        this.$store.commit('setUser', login.data.user);
+        this.$store.commit('toggleLogin');
       } else if (login.data.error) {
         this.error = login.data.error.message;
       }

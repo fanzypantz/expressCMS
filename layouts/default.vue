@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
     <navbar></navbar>
-    <login v-if="$store.state.auth.isLoggingIn"></login>
-    <signup v-if="$store.state.auth.isSigningUp"></signup>
+    <login v-if="$store.state.isLoggingIn"></login>
+    <signup v-if="$store.state.isSigningUp"></signup>
     <nuxt />
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       if (!this.$nuxt.$route.path.includes('auth')) {
         const user = await this.$axios.get('/api/user_data');
         if (user.data.email !== undefined) {
-          this.$store.commit('auth/setUser', user.data);
+          this.$store.commit('setUser', user.data);
         }
       }
     }

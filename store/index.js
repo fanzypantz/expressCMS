@@ -17,3 +17,11 @@ export const mutations = {
     state.isSigningUp = !state.isSigningUp;
   }
 };
+
+export const actions = {
+  nuxtServerInit({ commit }, { req }) {
+    if (req.session && req.session.authUser) {
+      commit('setUser', req.session.authUser);
+    }
+  }
+};
