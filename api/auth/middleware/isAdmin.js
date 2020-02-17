@@ -7,6 +7,7 @@ module.exports = function(req, res, next) {
   }
   // If the user isn't' logged in, return early
   return res.json({
-    success: false
+    success: false,
+    message: 'You are not an admin!'
   });
 };

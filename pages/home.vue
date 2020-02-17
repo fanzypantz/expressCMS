@@ -1,12 +1,18 @@
 <template>
   <div class="container">
-    <h1 @click="test">Test</h1>
+    <SideBar></SideBar>
   </div>
 </template>
 
 <script>
+import SideBar from '~/components/adminPanel/sideBar';
+
 export default {
   middleware: 'auth',
+
+  components: {
+    SideBar
+  },
 
   data() {
     return {};

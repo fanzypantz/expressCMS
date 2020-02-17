@@ -6,7 +6,7 @@
         status.health ? 'Healthy' : 'Faulty'
       }}</span>
     </h1>
-    <nuxt-link to="/admin">Admin Panel</nuxt-link>
+    <nuxt-link to="/home">Admin Panel</nuxt-link>
   </div>
 </template>
 

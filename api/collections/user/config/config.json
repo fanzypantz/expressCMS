@@ -1,4 +1,14 @@
 {
+  "__v": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": false
+  },
+  "_id": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  },
   "name": {
     "canDelete": false,
     "canEdit": false,
@@ -11,7 +21,7 @@
   },
   "password": {
     "canDelete": false,
-    "canEdit": false,
+    "canEdit": true,
     "show": true
   },
   "email": {

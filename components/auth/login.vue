@@ -77,12 +77,7 @@ export default {
         password: this.password
       });
       if (login.data.success) {
-        const path = this.$nuxt.$route.path;
-        if (path !== '/' && path !== '/admin') {
-          this.$nuxt.$router.replace({ path: '/' });
-        } else if (path === '/admin') {
-          window.location.reload(true);
-        }
+        window.location.reload(true);
         this.$store.commit('setUser', login.data.user);
         this.$store.commit('toggleLogin');
       } else if (login.data.error) {

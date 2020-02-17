@@ -2,9 +2,9 @@
 const fs = require('fs');
 const db = require('./db/connection');
 const passport = require('./auth/passport');
+const utilities = require('./utilities');
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const morgan = require('morgan');
 
 // App
@@ -47,6 +47,12 @@ fs.readdir('./api/routes', (err, files) => {
   files.forEach((file) => {
     app.use(require('./routes/' + file));
   });
+});
+
+const collectionDirs = utilities.getDirectories('./api/collections');
+collectionDirs.forEach((folder) => {
+  console.log('folder: ', folder);
+  app.use(require('./collections/' + folder + '/routes/routes'));
 });
 
 /// ///////////////////////////////

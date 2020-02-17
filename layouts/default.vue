@@ -59,4 +59,16 @@ body {
   min-height: calc(100vh - #{$navHeight});
   width: 100%;
 }
+
+.admin-container {
+  margin-left: auto;
+  min-height: calc(100vh - #{$navHeight});
+  width: calc(100vw - #{$sideBarWidth});
+}
+
+.admin-content {
+  background-color: $bg;
+  width: 80%;
+  margin: 20px auto;
+}
 </style>
