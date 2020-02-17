@@ -1,0 +1,58 @@
+{
+  "name": "String",
+  "username": {
+    "type": "String",
+    "required": [true, "Please provide an username"],
+    "validate": [
+      {
+        "action": "method",
+        "source": "privateMethods.validateUsername"
+      },
+      "Please fill in a valid username"
+    ]
+  },
+  "password": {
+    "type": "String",
+    "required": [true, "Please provide a password"],
+    "validate": [
+      {
+        "action": "method",
+        "source": "privateMethods.validatePassword"
+      },
+      "Please fill in a password with at least 8 characters, one uppercase, one number one special character."
+    ]
+  },
+  "email": {
+    "type": "String",
+    "required": [true, "Please provide an email"],
+    "unique": true,
+    "validate": [
+      {
+        "action": "method",
+        "source": "privateMethods.validateEmail"
+      },
+      "Please fill in a valid email address."
+    ]
+  },
+  "admin": { "type": "Boolean", "default": false },
+  "location": "String",
+  "meta": {
+    "age": "Number",
+    "website": "String"
+  },
+  "password_token": "String",
+  "created_at": {
+    "type": "Date",
+    "default": {
+      "action": "javascript",
+      "source": "Date.now"
+    }
+  },
+  "updated_at": {
+    "type": "Date",
+    "default": {
+      "action": "javascript",
+      "source": "Date.now"
+    }
+  }
+}

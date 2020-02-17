@@ -1,5 +1,5 @@
-// We will need the models folder to check passport agains
-const User = require('../db/models/user');
+// We will need the config folder to check passport agains
+const User = require('../collections/user/model/user');
 
 // we import passport packages required for authentication
 const passport = require('passport');

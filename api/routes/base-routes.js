@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const router = Router();
 // Models
-const user = require('../db/models/user');
+const user = require('../collections/user/model/user');
 
 // Routes
 

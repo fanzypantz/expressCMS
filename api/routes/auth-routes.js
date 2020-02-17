@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const router = Router();
 // Models
-const User = require('../db/models/user');
+const User = require('../collections/user/model/user');
 // Auth imports
 const passport = require('../auth/passport');
 const nodemailer = require('../auth/nodemailer');

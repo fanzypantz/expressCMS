@@ -1,7 +1,7 @@
 export default function({ store, error }) {
   if (store.state.user === null) {
     error({
-      message: 'You are not connected',
+      message: 'You are not logged in',
       statusCode: 403
     });
   } else if (!store.state.user.admin) {

@@ -1,0 +1,52 @@
+{
+  "name": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  },
+  "username": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  },
+  "password": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  },
+  "email": {
+    "canDelete": false,
+    "canEdit": true,
+    "show": true
+  },
+  "admin": {
+    "canDelete": false,
+    "canEdit": true,
+    "show": true
+  },
+  "location": {
+    "canDelete": false,
+    "canEdit": true,
+    "show": true
+  },
+  "meta": {
+    "canDelete": false,
+    "canEdit": true,
+    "show": true
+  },
+  "password_token": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": false
+  },
+  "created_at": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  },
+  "updated_at": {
+    "canDelete": false,
+    "canEdit": false,
+    "show": true
+  }
+}

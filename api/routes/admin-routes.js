@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = Router();
 // Models
 // eslint-disable-next-line no-unused-vars
-const User = require('../db/models/user');
+const User = require('../collections/user/model/user');
 // Auth imports
 const isAdmin = require('../auth/middleware/isAdmin');
 
