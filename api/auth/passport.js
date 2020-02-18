@@ -20,9 +20,15 @@ passport.use(
           email
         },
         function(err, user) {
-          if (err) {
+          if (user === null) {
             return done(null, false, {
               message: 'Could not find an user with this email.'
+            });
+          }
+          if (err) {
+            return done(null, false, {
+              message: 'An error has occured',
+              errors: err
             });
           }
           if (User.validatePassword(password, user.password)) {

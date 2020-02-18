@@ -93,7 +93,9 @@ export default {
         '/create';
       const response = await axios.post(url, { data: this.collection });
       if (response.data.success) {
-        console.log('response: ', response);
+        this.$nuxt.$router.replace({
+          path: '/collections/' + this.$route.params.name + '?mode=read'
+        });
       } else if (response.data.errors) {
         console.log('errors: ', response.data.errors);
       }

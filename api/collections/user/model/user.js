@@ -15,11 +15,18 @@ userSchema.statics.validatePassword = function(password, storedPassword) {
   return bcrypt.compareSync(password, storedPassword);
 };
 
+// Path Methods
+// Check if the password has changed between save
+// If it is, hash the new password and add it
+userSchema.path('password').set(function(newVal) {
+  if (newVal !== this.password) {
+    return privateMethods.hashPassword(newVal);
+  }
+});
+
 // Pre Methods
 userSchema.pre('save', function(next) {
-  const currentDate = new Date();
-  this.password = privateMethods.hashPassword(this.password);
-  this.updated_at = currentDate;
+  this.updated_at = new Date();
   next();
 });
 
