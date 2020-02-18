@@ -3,72 +3,84 @@
     "canDelete": false,
     "canEdit": false,
     "show": false,
+    "showInTable": false,
     "widget": "text"
   },
   "_id": {
     "canDelete": false,
     "canEdit": false,
     "show": true,
+    "showInTable": true,
     "widget": "text"
   },
   "name": {
     "canDelete": false,
     "canEdit": false,
     "show": true,
+    "showInTable": true,
     "widget": "text"
   },
   "username": {
     "canDelete": false,
     "canEdit": false,
     "show": true,
+    "showInTable": true,
     "widget": "text"
   },
   "password": {
     "canDelete": false,
     "canEdit": true,
     "show": true,
+    "showInTable": false,
     "widget": "text"
   },
   "email": {
     "canDelete": false,
     "canEdit": true,
     "show": true,
+    "showInTable": true,
     "widget": "email"
   },
   "admin": {
     "canDelete": false,
     "canEdit": true,
     "show": true,
+    "showInTable": true,
     "widget": "boolean"
   },
   "location": {
     "canDelete": false,
     "canEdit": true,
     "show": true,
+    "showInTable": false,
     "widget": "location"
   },
   "meta": {
     "canDelete": false,
     "canEdit": true,
     "show": true,
+    "showInTable": false,
     "widget": "object"
   },
   "password_token": {
     "canDelete": false,
     "canEdit": false,
     "show": false,
+    "showInTable": false,
     "widget": "text"
   },
   "created_at": {
     "canDelete": false,
     "canEdit": false,
     "show": true,
+    "showInTable": false,
     "widget": "date"
   },
   "updated_at": {
     "canDelete": false,
     "canEdit": false,
     "show": true,
+    "showInTable": true,
     "widget": "date"
   }
 }

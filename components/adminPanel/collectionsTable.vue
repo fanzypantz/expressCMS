@@ -1,12 +1,17 @@
 <template>
   <div class="admin-container">
     <div v-if="collection !== null" class="admin-content">
-      <table>
+      <table v-if="collection !== null && modelConfig !== null">
         <tr>
-          <th v-for="(value, key) in collection[0]">{{ key }}</th>
+          <th
+            v-if="modelConfig[key].showInTable"
+            v-for="(value, key) in collection[0]"
+          >
+            {{ key }}
+          </th>
         </tr>
         <tr v-for="row in collection">
-          <td v-for="(item, key) in row">
+          <td v-if="modelConfig[key].showInTable" v-for="(item, key) in row">
             <nuxt-link
               :to="{
                 path: '/collections/' + $route.params.name,
@@ -31,7 +36,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      collection: null
+      collection: null,
+      modelConfig: null
     };
   },
 
@@ -39,6 +45,11 @@ export default {
     // Get all of type when you load in
     // Could not prefetch the route params
     this.getAll();
+
+    // Require the config files dynamically based on the route name
+    this.modelConfig = require('~/api/collections/' +
+      this.$route.params.name +
+      '/config/config.json');
   },
 
   methods: {
