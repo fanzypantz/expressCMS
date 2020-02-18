@@ -105,7 +105,7 @@ export default {
       // If successful return to the table page
       if (response.data.success) {
         this.$nuxt.$router.replace({
-          path: '/collections/' + this.$route.params.name + '?mode=show'
+          path: '/collections/' + this.$route.params.name + '?mode=read'
         });
       } else if (response.data.errors) {
         console.log('errors: ', response.data.errors);
@@ -115,8 +115,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#admin-form {
-  color: $main;
-}
-</style>
+<style lang="scss"></style>

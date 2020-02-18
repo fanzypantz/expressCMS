@@ -100,4 +100,20 @@ router.post('/admin/collections/:name/saveOne', isAdmin, async function(
   }
 });
 
+router.post('/admin/collections/:name/create', isAdmin, function(req, res) {
+  const newUser = new User(req.body.data);
+  newUser.save((err) => {
+    if (err) {
+      console.log('err: ', err.errors);
+      res.json({
+        errors: err.errors
+      });
+      return;
+    }
+    res.json({
+      success: true
+    });
+  });
+});
+
 module.exports = router;

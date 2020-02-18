@@ -2,9 +2,10 @@
   <nav class="side-bar">
     <nuxt-link :to="'/home/'">Home</nuxt-link>
     <nuxt-link
-      :to="{ path: '/collections/' + name, query: { mode: 'show' } }"
+      :to="{ path: '/collections/' + name, query: { mode: 'read' } }"
       v-for="name in $options.collections.names"
       :key="name"
+      class="btn"
       >{{ name }}</nuxt-link
     >
   </nav>

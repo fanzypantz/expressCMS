@@ -1,25 +1,30 @@
 <template>
   <div class="container">
     <SideBar></SideBar>
-    <CollectionsTable
-      v-if="this.$route.query.mode === 'show'"
-    ></CollectionsTable>
-    <CollectionsEdit v-if="this.$route.query.mode === 'edit'"></CollectionsEdit>
+    <CollectionsCreate
+      v-if="this.$route.query.mode === 'create'"
+    ></CollectionsCreate>
+    <CollectionsRead v-if="this.$route.query.mode === 'read'"></CollectionsRead>
+    <CollectionsUpdate
+      v-if="this.$route.query.mode === 'update'"
+    ></CollectionsUpdate>
   </div>
 </template>
 
 <script>
 import SideBar from '~/components/adminPanel/sideBar';
-import CollectionsTable from '~/components/adminPanel/collectionsTable';
-import CollectionsEdit from '~/components/adminPanel/collectionsEdit';
+import CollectionsCreate from '~/components/adminPanel/collectionsCreate';
+import CollectionsRead from '~/components/adminPanel/collectionsRead';
+import CollectionsUpdate from '~/components/adminPanel/collectionsUpdate';
 
 export default {
   middleware: 'auth',
 
   components: {
     SideBar,
-    CollectionsTable,
-    CollectionsEdit
+    CollectionsCreate,
+    CollectionsRead,
+    CollectionsUpdate
   },
 
   data() {

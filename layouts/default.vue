@@ -71,4 +71,8 @@ body {
   width: 80%;
   margin: 20px auto;
 }
+
+#admin-form {
+  color: $main;
+}
 </style>

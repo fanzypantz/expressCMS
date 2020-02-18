@@ -1,5 +1,16 @@
 <template>
   <div class="admin-container">
+    <div class="admin-content">
+      <nuxt-link
+        :to="{
+          path: '/collections/' + $route.params.name,
+          query: { mode: 'create' }
+        }"
+        class="btn"
+        >Add new {{ $route.params.name }}</nuxt-link
+      >
+    </div>
+
     <div v-if="collection !== null" class="admin-content">
       <table v-if="collection !== null && modelConfig !== null">
         <tr>
@@ -15,7 +26,7 @@
             <nuxt-link
               :to="{
                 path: '/collections/' + $route.params.name,
-                query: { mode: 'edit', id: item }
+                query: { mode: 'update', id: item }
               }"
               v-if="key === '_id'"
               ><div>
@@ -37,6 +48,7 @@ export default {
   data() {
     return {
       collection: null,
+      schema: null,
       modelConfig: null
     };
   },

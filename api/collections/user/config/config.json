@@ -15,14 +15,14 @@
   },
   "name": {
     "canDelete": false,
-    "canEdit": false,
+    "canEdit": true,
     "show": true,
     "showInTable": true,
     "widget": "text"
   },
   "username": {
     "canDelete": false,
-    "canEdit": false,
+    "canEdit": true,
     "show": true,
     "showInTable": true,
     "widget": "text"
@@ -57,7 +57,7 @@
   },
   "meta": {
     "canDelete": false,
-    "canEdit": true,
+    "canEdit": false,
     "show": true,
     "showInTable": false,
     "widget": "object"
