@@ -32,7 +32,7 @@
     "canEdit": true,
     "show": true,
     "showInTable": false,
-    "widget": "text"
+    "widget": "password"
   },
   "email": {
     "canDelete": false,

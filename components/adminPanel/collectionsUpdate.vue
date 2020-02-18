@@ -20,6 +20,13 @@
           />
           <input
             :id="key"
+            v-else-if="modelConfig[key].widget === 'password'"
+            :name="key"
+            v-model="collection[key]"
+            type="password"
+          />
+          <input
+            :id="key"
             v-else-if="modelConfig[key].widget === 'boolean'"
             :name="key"
             v-model="collection[key]"
