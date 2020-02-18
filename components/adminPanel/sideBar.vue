@@ -2,7 +2,7 @@
   <nav class="side-bar">
     <nuxt-link :to="'/home/'">Home</nuxt-link>
     <nuxt-link
-      :to="'/collections/' + name"
+      :to="{ path: '/collections/' + name, query: { mode: 'show' } }"
       v-for="name in $options.collections.names"
       :key="name"
       >{{ name }}</nuxt-link

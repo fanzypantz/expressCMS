@@ -1,59 +1,34 @@
 <template>
   <div class="container">
     <SideBar></SideBar>
-    <div class="admin-container">
-      <div v-if="collection !== null" class="admin-content">
-        <table>
-          <tr>
-            <th v-for="(value, name) in collection[0]">{{ name }}</th>
-          </tr>
-          <tr v-for="row in collection">
-            <td v-for="item in row">{{ item }}</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <CollectionsTable
+      v-if="this.$route.query.mode === 'show'"
+    ></CollectionsTable>
+    <CollectionsEdit v-if="this.$route.query.mode === 'edit'"></CollectionsEdit>
   </div>
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import axios from 'axios';
 import SideBar from '~/components/adminPanel/sideBar';
+import CollectionsTable from '~/components/adminPanel/collectionsTable';
+import CollectionsEdit from '~/components/adminPanel/collectionsEdit';
 
 export default {
   middleware: 'auth',
 
   components: {
-    SideBar
+    SideBar,
+    CollectionsTable,
+    CollectionsEdit
   },
 
   data() {
-    return {
-      collection: null
-    };
+    return {};
   },
 
-  mounted() {
-    // Get all of type when you load in
-    // Could not prefetch the route params
-    this.getAll();
-  },
+  mounted() {},
 
-  methods: {
-    async getAll() {
-      const url =
-        (process.env.APP_URL || 'http://localhost:4000') +
-        '/api/admin/collections/' +
-        this.$route.params.name +
-        '/getAll';
-      console.log('url: ', url);
-      const response = await this.$axios.get(url);
-      if (response.data.success) {
-        this.collection = response.data[this.$route.params.name + 's'];
-      }
-    }
-  }
+  methods: {}
 };
 </script>
 

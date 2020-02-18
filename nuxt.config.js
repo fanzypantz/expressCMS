@@ -102,6 +102,9 @@ module.exports = {
     watch: ['api'],
 
     extend(config, ctx) {
+      // Debug tools
+      config.devtool = ctx.isClient ? 'eval-source-map' : 'inline-source-map';
+
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

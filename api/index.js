@@ -51,7 +51,6 @@ fs.readdir('./api/routes', (err, files) => {
 
 const collectionDirs = utilities.getDirectories('./api/collections');
 collectionDirs.forEach((folder) => {
-  console.log('folder: ', folder);
   app.use(require('./collections/' + folder + '/routes/routes'));
 });
 

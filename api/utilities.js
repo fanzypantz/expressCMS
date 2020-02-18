@@ -5,5 +5,15 @@ module.exports = {
     fs
       .readdirSync(source, { withFileTypes: true })
       .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => dirent.name)
+      .map((dirent) => dirent.name),
+
+  getExcluded: (JSON) => {
+    const excludedValues = {};
+    Object.entries(JSON).forEach(([key, val]) => {
+      if (!val.show) {
+        excludedValues[key] = 0;
+      }
+    });
+    return excludedValues;
+  }
 };

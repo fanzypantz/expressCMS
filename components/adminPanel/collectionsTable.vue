@@ -1,0 +1,66 @@
+<template>
+  <div class="admin-container">
+    <div v-if="collection !== null" class="admin-content">
+      <table>
+        <tr>
+          <th v-for="(value, key) in collection[0]">{{ key }}</th>
+        </tr>
+        <tr v-for="row in collection">
+          <td v-for="(item, key) in row">
+            <nuxt-link
+              :to="{
+                path: '/collections/' + $route.params.name,
+                query: { mode: 'edit', id: item }
+              }"
+              v-if="key === '_id'"
+              ><div>
+                {{ item }}
+              </div>
+            </nuxt-link>
+            <div v-else>{{ item }}</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      collection: null
+    };
+  },
+
+  mounted() {
+    // Get all of type when you load in
+    // Could not prefetch the route params
+    this.getAll();
+  },
+
+  methods: {
+    async getAll() {
+      const url =
+        (process.env.APP_URL || 'http://localhost:4000') +
+        '/api/admin/collections/' +
+        this.$route.params.name +
+        '/getAll';
+      const response = await axios.get(url);
+      if (response.data.success) {
+        this.collection = response.data[this.$route.params.name + 's'];
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+table {
+  color: $main;
+  width: 100%;
+  height: 100%;
+}
+</style>

@@ -5,7 +5,7 @@
   "author": "Andreas Halvorsen Tollånes",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch api --exec \"nuxt\"",
+    "dev": "nodemon --inspect --watch api --exec \"nuxt\"",
     "build": "nuxt build",
     "start": "nuxt build && nuxt start",
     "precommit": "npm run lint",
