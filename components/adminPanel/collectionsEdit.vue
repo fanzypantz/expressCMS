@@ -1,23 +1,55 @@
 <template>
   <div class="admin-container">
     <div class="admin-content">
-      <form>
-        <div v-for="(value, key) in schema" class="form-group">
-          <label :for="key"></label>
+      <form
+        id="admin-form"
+        v-if="collection !== null && modelConfig !== null && schema !== null"
+      >
+        <div
+          v-if="modelConfig[key].show && modelConfig[key].canEdit"
+          v-for="(value, key) in schema"
+          class="form-group"
+        >
+          <label :for="key">{{ key }}</label>
           <input
             :id="key"
-            v-if="value.type === 'String'"
+            v-if="modelConfig[key].widget === 'email'"
             :name="key"
+            v-model="collection[key]"
+            type="email"
+          />
+          <input
+            :id="key"
+            v-else-if="modelConfig[key].widget === 'boolean'"
+            :name="key"
+            v-model="collection[key]"
+            type="checkbox"
+          />
+          <textarea
+            :id="key"
+            v-else-if="modelConfig[key].widget === 'textarea'"
+            v-model="collection[key]"
+            :name="key"
+          ></textarea>
+          <input
+            :id="key"
+            v-else
+            :name="key"
+            v-model="collection[key]"
             type="text"
           />
         </div>
+
+        <button @click="submitData" type="submit">Save</button>
       </form>
     </div>
   </div>
 </template>
+// TODO: Create more widgets
 
 <script>
 import axios from 'axios';
+
 export default {
   props: {
     collectionName: {
@@ -39,6 +71,8 @@ export default {
   mounted() {
     // Fetch the current user to be edited
     this.getOne();
+
+    // Require the config files dynamically based on the route name
     this.schema = require('~/api/collections/' +
       this.$route.params.name +
       '/config/schema.json');
@@ -58,15 +92,31 @@ export default {
       if (response.data.success) {
         this.collection = response.data[this.$route.params.name];
       }
+    },
+
+    async submitData(e) {
+      e.preventDefault();
+      const url =
+        (process.env.APP_URL || 'http://localhost:4000') +
+        '/api/admin/collections/' +
+        this.$route.params.name +
+        '/saveOne';
+      const response = await axios.post(url, { data: this.collection });
+      // If successful return to the table page
+      if (response.data.success) {
+        this.$nuxt.$router.replace({
+          path: '/collections/' + this.$route.params.name + '?mode=show'
+        });
+      } else if (response.data.errors) {
+        console.log('errors: ', response.data.errors);
+      }
     }
   }
 };
 </script>
 
 <style lang="scss">
-table {
+#admin-form {
   color: $main;
-  width: 100%;
-  height: 100%;
 }
 </style>

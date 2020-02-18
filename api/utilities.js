@@ -15,5 +15,15 @@ module.exports = {
       }
     });
     return excludedValues;
+  },
+
+  getEditable: (JSON) => {
+    const editable = [];
+    Object.entries(JSON).forEach(([key, val]) => {
+      if (val.canEdit) {
+        editable.push(key);
+      }
+    });
+    return editable;
   }
 };

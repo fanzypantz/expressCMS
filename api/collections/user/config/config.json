@@ -2,61 +2,73 @@
   "__v": {
     "canDelete": false,
     "canEdit": false,
-    "show": false
+    "show": false,
+    "widget": "text"
   },
   "_id": {
     "canDelete": false,
     "canEdit": false,
-    "show": true
+    "show": true,
+    "widget": "text"
   },
   "name": {
     "canDelete": false,
     "canEdit": false,
-    "show": true
+    "show": true,
+    "widget": "text"
   },
   "username": {
     "canDelete": false,
     "canEdit": false,
-    "show": true
+    "show": true,
+    "widget": "text"
   },
   "password": {
     "canDelete": false,
     "canEdit": true,
-    "show": true
+    "show": true,
+    "widget": "text"
   },
   "email": {
     "canDelete": false,
     "canEdit": true,
-    "show": true
+    "show": true,
+    "widget": "email"
   },
   "admin": {
     "canDelete": false,
     "canEdit": true,
-    "show": true
+    "show": true,
+    "widget": "boolean"
   },
   "location": {
     "canDelete": false,
     "canEdit": true,
-    "show": true
+    "show": true,
+    "widget": "location"
   },
   "meta": {
     "canDelete": false,
     "canEdit": true,
-    "show": true
+    "show": true,
+    "widget": "object"
   },
   "password_token": {
     "canDelete": false,
     "canEdit": false,
-    "show": false
+    "show": false,
+    "widget": "text"
   },
   "created_at": {
     "canDelete": false,
     "canEdit": false,
-    "show": true
+    "show": true,
+    "widget": "date"
   },
   "updated_at": {
     "canDelete": false,
     "canEdit": false,
-    "show": true
+    "show": true,
+    "widget": "date"
   }
 }

@@ -56,7 +56,7 @@ export default {
     return {
       error: null,
       email: 'andreas@tollanes.com',
-      password: 'Tullernes1!'
+      password: 'Password1!'
     };
   },
 
