@@ -1,6 +1,6 @@
 <template>
   <nav class="side-bar">
-    <nuxt-link :to="'/home/'">Home</nuxt-link>
+    <nuxt-link :to="'/home/'" class="btn">Home</nuxt-link>
     <nuxt-link
       :to="{ path: '/collections/' + name, query: { mode: 'read' } }"
       v-for="name in $options.collections.names"

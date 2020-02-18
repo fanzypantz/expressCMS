@@ -78,13 +78,6 @@ router.post('/admin/collections/:name/saveOne', isAdmin, async function(
         // Dynamically assign the new variables
         for (let i = 0; i < canEdit.length; i++) {
           if (user[canEdit[i]] !== req.body.data[canEdit[i]]) {
-            console.log(
-              'user edit: ',
-              user[canEdit[i]],
-              ' :to: ',
-              req.body.data[canEdit[i]]
-            );
-
             user[canEdit[i]] = req.body.data[canEdit[i]];
           }
         }

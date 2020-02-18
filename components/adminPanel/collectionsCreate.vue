@@ -97,6 +97,7 @@ export default {
           path: '/collections/' + this.$route.params.name + '?mode=read'
         });
       } else if (response.data.errors) {
+        // TODO Change this to proper error handeling
         console.log('errors: ', response.data.errors);
       }
     }
