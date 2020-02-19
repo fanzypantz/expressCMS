@@ -9,6 +9,7 @@
         class="btn"
         >Add new {{ $route.params.name }}</nuxt-link
       >
+      <button @click="createNew">Test</button>
     </div>
 
     <div v-if="collection !== null" class="admin-content">
@@ -72,6 +73,15 @@ export default {
         this.$route.params.name +
         '/getAll';
       const response = await axios.get(url);
+      if (response.data.success) {
+        this.collection = response.data[this.$route.params.name + 's'];
+      }
+    },
+
+    async createNew() {
+      const response = await axios.post('/api/admin/addCollection', {
+        name: 'test'
+      });
       if (response.data.success) {
         this.collection = response.data[this.$route.params.name + 's'];
       }
