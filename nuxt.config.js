@@ -1,6 +1,8 @@
 import bodyParser from 'body-parser';
 import session from 'express-session';
+// eslint-disable-next-line nuxt/no-cjs-in-config
 const env = require('dotenv').config();
+const MongoStore = require('connect-mongo')(session);
 
 module.exports = {
   mode: 'universal',
@@ -84,11 +86,11 @@ module.exports = {
 
     session({
       secret: 'multimonitorsetup',
-      resave: true,
+      resave: false,
       saveUninitialized: true,
-      cookie: {
-        maxAge: 60000
-      }
+      store: new MongoStore({
+        url: 'mongodb://localhost/' + process.env.MONGODB_URI || 'mevnStack'
+      })
     }),
 
     // API middleware
