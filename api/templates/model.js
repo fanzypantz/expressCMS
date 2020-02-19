@@ -7,7 +7,7 @@ module.exports = {
 
     return `
       // Default Imports
-      const ${name}Config = require('../config/shema');
+      const ${name}Config = require('../config/schema');
       const privateMethods = require('../methods/privateMethods.js');
       const mongoose = require('mongoose');
       const Schema = mongoose.Schema;

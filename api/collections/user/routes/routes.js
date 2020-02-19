@@ -7,11 +7,7 @@ const { Router } = require('express');
 const router = Router();
 
 // Routes
-router.get('/admin/collections/:name/getAll', isAdmin, function(
-  req,
-  res,
-  next
-) {
+router.get('/admin/collections/user/getAll', isAdmin, function(req, res, next) {
   // Exclude columns based on config file
   const excludedValues = utilities.getExcluded(modelConfig);
 
@@ -30,7 +26,7 @@ router.get('/admin/collections/:name/getAll', isAdmin, function(
   });
 });
 
-router.post('/admin/collections/:name/getOne', isAdmin, function(
+router.post('/admin/collections/user/getOne', isAdmin, function(
   req,
   res,
   next
@@ -57,7 +53,7 @@ router.post('/admin/collections/:name/getOne', isAdmin, function(
   }
 });
 
-router.post('/admin/collections/:name/saveOne', isAdmin, async function(
+router.post('/admin/collections/user/saveOne', isAdmin, async function(
   req,
   res,
   next
@@ -100,7 +96,7 @@ router.post('/admin/collections/:name/saveOne', isAdmin, async function(
   }
 });
 
-router.post('/admin/collections/:name/create', isAdmin, function(req, res) {
+router.post('/admin/collections/user/create', isAdmin, function(req, res) {
   const newUser = new User(req.body.data);
   newUser.save((err) => {
     if (err) {

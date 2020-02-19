@@ -67,6 +67,7 @@ body {
 }
 
 .admin-content {
+  color: $main;
   background-color: $bg;
   width: 80%;
   margin: 20px auto;

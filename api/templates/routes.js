@@ -15,7 +15,7 @@ module.exports = {
     const router = Router();
 
     // Routes
-    router.get('/admin/collections/:name/getAll', isAdmin, function(
+    router.get('/admin/collections/${name}/getAll', isAdmin, function(
       req,
       res,
       next
@@ -38,7 +38,7 @@ module.exports = {
       });
     });
 
-    router.post('/admin/collections/:name/getOne', isAdmin, function(
+    router.post('/admin/collections/${name}/getOne', isAdmin, function(
       req,
       res,
       next
@@ -65,7 +65,7 @@ module.exports = {
       }
     });
 
-    router.post('/admin/collections/:name/saveOne', isAdmin, async function(
+    router.post('/admin/collections/${name}/saveOne', isAdmin, async function(
       req,
       res,
       next
@@ -108,7 +108,7 @@ module.exports = {
       }
     });
 
-    router.post('/admin/collections/:name/create', isAdmin, function(req, res) {
+    router.post('/admin/collections/${name}/create', isAdmin, function(req, res) {
       const new${uppercaseName} = new ${uppercaseName}(req.body.data);
       new${uppercaseName}.save((err) => {
         if (err) {

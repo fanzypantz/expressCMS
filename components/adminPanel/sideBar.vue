@@ -8,6 +8,9 @@
       class="btn"
       >{{ name }}</nuxt-link
     >
+    <nuxt-link :to="'/addCollection/'" class="btn"
+      >Collection Builder</nuxt-link
+    >
   </nav>
 </template>
 

@@ -20,12 +20,7 @@ export default {
 
   created() {},
 
-  methods: {
-    async test() {
-      // eslint-disable-next-line no-unused-vars
-      const test = await this.$axios.get('/api/admin/test');
-    }
-  }
+  methods: {}
 };
 </script>
 

@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 
 module.exports = {
   getDirectories: (source) =>
@@ -30,5 +30,17 @@ module.exports = {
   capitalize: (s) => {
     if (typeof s !== 'string') return '';
     return s.charAt(0).toUpperCase() + s.slice(1);
+  },
+
+  writeToFile: (filename, content) => {
+    return new Promise((resolve, reject) => {
+      fs.outputFile(filename, content, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve('File Was Saved!');
+        }
+      });
+    });
   }
 };

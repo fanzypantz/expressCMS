@@ -1,5 +1,5 @@
 // Default Imports
-const userConfig = require('../config/shema');
+const userConfig = require('../config/schema');
 const privateMethods = require('../methods/privateMethods.js');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;

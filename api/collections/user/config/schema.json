@@ -4,10 +4,7 @@
     "type": "String",
     "required": [true, "Please provide an username"],
     "validate": [
-      {
-        "action": "method",
-        "source": "privateMethods.validateUsername"
-      },
+      "privateMethods.validateUsername",
       "Please fill in a valid username"
     ]
   },
@@ -15,10 +12,7 @@
     "type": "String",
     "required": [true, "Please provide a password"],
     "validate": [
-      {
-        "action": "method",
-        "source": "privateMethods.validatePassword"
-      },
+      "privateMethods.validatePassword",
       "Please fill in a password with at least 8 characters, one uppercase, one number one special character."
     ]
   },
@@ -27,10 +21,7 @@
     "required": [true, "Please provide an email"],
     "unique": true,
     "validate": [
-      {
-        "action": "method",
-        "source": "privateMethods.validateEmail"
-      },
+      "privateMethods.validateEmail",
       "Please fill in a valid email address."
     ]
   },
@@ -43,16 +34,10 @@
   "password_token": { "type": "String" },
   "created_at": {
     "type": "Date",
-    "default": {
-      "action": "javascript",
-      "source": "Date.now"
-    }
+    "default": "Date.now"
   },
   "updated_at": {
     "type": "Date",
-    "default": {
-      "action": "javascript",
-      "source": "Date.now"
-    }
+    "default": "Date.now"
   }
 }
