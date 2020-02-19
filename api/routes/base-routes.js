@@ -16,10 +16,4 @@ router.get('/', (req, res) => {
   return res.status(200).send({ health: true });
 });
 
-router.get('/users/:userId', (req, res) => {
-  user.getUser(req.params.userId).then((user) => {
-    res.json(user);
-  });
-});
-
 module.exports = router;
