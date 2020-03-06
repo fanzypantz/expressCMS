@@ -1,10 +1,14 @@
-# client
+# A CMS for express.js
 
-> Client of a node.js server for mtgAPI
+This is a test project, don't use this for production. It does work(almost all core features are there), but I suggest you use a CMS that is more developed.
+
+Not completed:
+
+> Ability to delete a collection
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ yarn install
 
@@ -15,8 +19,4 @@ $ yarn dev
 $ yarn build
 $ yarn start
 
-# generate static project
-$ yarn generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
